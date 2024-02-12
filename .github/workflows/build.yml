@@ -28,7 +28,6 @@ jobs:
           git clone https://github.com/soxft/busuanzi.git
           cd busuanzi
           go build -o busuanzi main.go
-          mv ./busuanzi ../busuanzi
           cd ..
           
     - name: Upload artifact
@@ -36,7 +35,7 @@ jobs:
       with:
         name: Busuanzi-Serv00
         path: |
-            busuanzi
+            busuanzi/busuanzi
 
     - name: Generate release tag
       id: tag
@@ -49,7 +48,7 @@ jobs:
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         files: |
-              busuanzi
+              busuanzi/busuanzi
               
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
